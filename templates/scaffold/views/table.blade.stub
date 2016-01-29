@@ -1,0 +1,25 @@
+    <table id="Table$MODEL_NAME_PLURAL_CAMEL$" class="table table-striped table-hover table-bordered" >
+        <thead>
+        <th width="50px">Actions</th>
+        $FIELD_HEADERS$
+        </thead>
+        <tbody>
+        @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
+            <tr>
+                <td>
+                    <a href="{!! route('$MODEL_NAME_PLURAL_CAMEL$.edit', [$$MODEL_NAME_CAMEL$->id]) !!}"><abbr title="Modificar"><i class="glyphicon glyphicon-edit"></i></abbr></a>
+                	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                	<a href="{!! route('$MODEL_NAME_PLURAL_CAMEL$.delete', [$$MODEL_NAME_CAMEL$->id]) !!}" onclick="return confirm('Seguro de Elimnar este $MODEL_NAME$?')"><abbr title="Eliminar"><i class="glyphicon glyphicon-remove text-red"></i></abbr></a>
+                </td>
+                $FIELD_BODY$
+
+            </tr>
+        @endforeach
+        </tbody>
+        <tfoot>
+            <tr>
+                <th width="50px">Acciones</th>
+                $FIELD_HEADERS$
+             </tr>
+         </tfoot>
+    </table>

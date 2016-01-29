@@ -1,0 +1,45 @@
+
+@extends('admin.layouts.dashboard')
+
+@section('template_title')
+	View $MODEL_NAME$
+@endsection
+
+@section('template_fastload_css')
+
+
+@endsection
+
+@section('content')
+	<div class="content-wrapper">
+		<section class="content-header">
+
+			<h1>
+				View $MODEL_NAME$
+			</h1>
+
+			{!! Breadcrumbs::render('view_$MODEL_NAME_PLURAL_CAMEL$') !!}
+
+		</section>
+		<section class="content">
+	 		@include('$MODEL_NAME_PLURAL_CAMEL$.show_fields')
+	 		 <div class="form-group col-sm-12">
+                        {!! link_to('/$MODEL_NAME_PLURAL_CAMEL$', 'Back', ['class' => 'btn btn-warning']) !!}
+              </div>
+		</section>
+		<br>
+		<br>
+		<br>
+	</div>
+
+
+
+@endsection
+		@section('template_scripts')
+
+
+			@include('admin.structure.dashboard-scripts')
+			@include('scripts.address-lookup-g-api')
+			@include('scripts.modals')
+
+		@endsection

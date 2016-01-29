@@ -1,0 +1,39 @@
+{
+    "name": "gabrieljaime/laravel-api-generator-gj",
+    "description": "Laravel API/Scaffold/CRUD Generator from just one command with including Controller, Repository, Model, Migrations, routes.php update.",
+    "keywords": [
+        "laravel",
+        "api",
+        "model",
+        "migration",
+        "scaffold",
+        "CRUD",
+        "generator"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mitul Golakiya",
+            "email": "me@mitul.me",
+            "role": "Created By"
+        }
+    ,
+        {
+            "name": "Gabriel Jaime",
+            "email": "acagabo@gmail.com",
+            "role": "Edited By"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "5.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gabo\\": "src/Gabo/"
+        }
+    },
+    "suggest": {
+        "doctrine/dbal": "Required to use generator from existing table."
+    }
+}

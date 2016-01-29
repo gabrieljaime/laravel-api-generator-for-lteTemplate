@@ -1,0 +1,148 @@
+@extends('admin.layouts.dashboard')
+
+@section('template_title')
+    List Of $MODEL_NAME$
+@endsection
+
+@section('template_fastload_css')
+
+
+@endsection
+
+
+@section('content')
+   <div class="content-wrapper">
+           <section class="content-header">
+               <h1>
+                   $MODEL_NAME$
+                   <small> List </small>
+               </h1>
+
+               {!! Breadcrumbs::render('$MODEL_NAME_PLURAL_CAMEL$') !!}
+
+           </section>
+           <section class="content">
+                <div class="box box-primary">
+
+                    @include('flash::message')
+
+                    <div class="box-header">
+                        <div class="pull-right box-tools">
+                            <a href="{{route('$MODEL_NAME_PLURAL_CAMEL$.create')}}" class="btn btn-primary btn-sm iframe">
+                                <span class="fa fa-plus-circle"></span> Create New
+                            </a>
+                            <a href="#" onClick="table.fnReloadAjax()" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></a>
+                        </div>
+                        <i class="fa fa-user"></i>
+                        <h3 class="box-title">$MODEL_NAME_PLURAL$</h3>
+
+                    </div>
+
+
+         <div class="box-body">
+            @if($$MODEL_NAME_PLURAL_CAMEL$->isEmpty())
+                <div class="well text-center">No found any $MODEL_NAME_PLURAL$.</div>
+            @else
+                 @include('employees.table')
+            @endif
+            </div>
+        </div>
+        </section>
+    </div>
+
+@endsection
+
+@section('template_scripts')
+
+
+    <!-- DataTables -->
+
+
+    <script type="text/javascript">
+           $(function() {
+               // Setup - add a text input to each footer cell
+               $('#Table$MODEL_NAME_PLURAL_CAMEL$ tfoot th').each( function () {
+                   var title = $(this).text();
+                   $(this).html( '<input type="text" id="search'+title+'" class="form-control" placeholder="Search '+title+'" />' );
+               } );
+               var r = $('#Table$MODEL_NAME_PLURAL_CAMEL$ tfoot tr');
+               r.find('th').each(function(){
+                   $(this).css('padding', 5);
+               });
+               $('#Table$MODEL_NAME_PLURAL_CAMEL$ thead').prepend(r);
+
+               $('#search_0').css('text-align', 'center');
+                $('#Table$MODEL_NAME_PLURAL_CAMEL$').DataTable({
+                   "scrollX": true,
+                   "processing": true,
+                 "serverSide": true,
+                   "autoFill": true,
+                    "dom": 'lfrtip<"clear"B>',
+                "ajax": {
+                    "url": '{{ URL::to('$MODEL_NAME_PLURAL_CAMEL$/data') }}'
+                },
+                    buttons: {
+                        dom: {
+                                button: {
+                                tag: 'a',
+                                className: 'btn btn-primary'
+                            }
+                        },
+                    buttons:  [{
+                        extend: 'colvis',
+                        text: 'Hide Columns'
+                    }, {
+                        extend: 'copyHtml5',
+                        text: 'Copy'
+                    },{
+                        extend: 'excelHtml5',
+                        text: 'To Excel',
+                        title: 'Table $MODEL_NAME_PLURAL_CAMEL$'
+                    }, {
+                        extend: 'pdfHtml5',
+                        text: 'To PDF',
+                        title: 'Table $MODEL_NAME_PLURAL_CAMEL$'
+                    }
+                    ]},
+                "columns": [
+                    $FIELDS_COLUMNS$
+                ]
+            });
+
+               var table = $('#Table$MODEL_NAME_PLURAL_CAMEL$').DataTable();
+               // Apply the search
+               table.columns().each( function () {
+                   var that = this;
+                   $( 'input', this.footer() ).on( 'keydown blur', function (ev) {
+
+                       if (ev.keyCode == 13 ) { //only on enter keypress (code 13)
+                           that
+                                   .column(this.parentNode.cellIndex)
+                                   .search( this.value )
+                                   .draw();
+                       }
+                   } );
+               } );
+           });
+
+    </script>
+           <script type="text/javascript">
+
+           $(document).ready(function() {
+               // select2 style
+               $('.select2').select2();
+
+               // dataTables bootstrap style
+               $('.dataTables_length select').select2({width: 80})
+               $('.dataTables_filter input').addClass('form-control')
+
+               // add blue bg on header
+               $('.dataTable thead th').addClass('bg-blue');
+
+           });
+    </script>
+    @include('admin.structure.dashboard-scripts')
+    @include('scripts.address-lookup-g-api')
+    @include('scripts.modals')
+
+@endsection
