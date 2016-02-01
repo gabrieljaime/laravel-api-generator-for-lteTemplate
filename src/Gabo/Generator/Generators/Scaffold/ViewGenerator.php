@@ -134,6 +134,19 @@ class ViewGenerator implements GeneratorProvider
             $templateData = str_replace('$PAGINATE$', '', $templateData);
         }
 
+        $TableColumns="";
+        $ColumnIndex =0;
+
+        foreach ($this->commandData->inputFields as $field) {
+            $TableColumns .= '{ "targets" : ['.$ColumnIndex.'],"data": "'.Str::title(str_replace('_', ' ', $field['fieldName'])).'" },\n\t';
+            $ColumnIndex ++;
+        }
+
+        $TableColumns = trim($TableColumns);
+
+        $templateData = str_replace('$FIELDS_COLUMNS$', $TableColumns, $templateData);
+
+
         $fileName = 'index.blade.php';
 
         $path = $this->path.$fileName;

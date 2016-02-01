@@ -41,6 +41,8 @@ class $MODEL_NAME$Controller extends AppBaseController
 	 */
 	public function create()
 	{
+		$SELECTS_SOURCE$
+
 		return view('$MODEL_NAME_PLURAL_CAMEL$.create')$SELECTS_INPUTS$;
 	}
 
@@ -68,6 +70,8 @@ class $MODEL_NAME$Controller extends AppBaseController
 		$input = $request->all();
 
 		$$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
+
+
 
 		Flash::success('$MODEL_NAME$ saved successfully.');
 
@@ -106,6 +110,8 @@ class $MODEL_NAME$Controller extends AppBaseController
 	{
 		$$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->find($id);
 
+		$SELECTS_SOURCE$
+
 		if(empty($$MODEL_NAME_CAMEL$))
 		{
 			Flash::error('$MODEL_NAME$ not found');
@@ -127,6 +133,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 	public function update($id, Update$MODEL_NAME$Request $request)
 	{
 		$$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->find($id);
+
 
 		if(empty($$MODEL_NAME_CAMEL$))
 		{

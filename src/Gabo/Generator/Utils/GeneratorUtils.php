@@ -37,7 +37,7 @@ class GeneratorUtils
 
         $typeOptions = explode(':', $type);
         $type = $typeOptions[0];
-        if (count($typeOptions) >= 1) {
+        if (count($typeOptions) > 1) {
             $typeOptions = $typeOptions[1];
         } else {
             $typeOptions = [];

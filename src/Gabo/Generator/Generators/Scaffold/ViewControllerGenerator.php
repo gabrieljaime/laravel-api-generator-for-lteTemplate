@@ -4,6 +4,7 @@ namespace Gabo\Generator\Generators\Scaffold;
 
 use Config;
 use Gabo\Generator\CommandData;
+use Illuminate\Support\Str;
 use Gabo\Generator\Generators\GeneratorProvider;
 use Gabo\Generator\Utils\GeneratorUtils;
 
@@ -32,6 +33,26 @@ class ViewControllerGenerator implements GeneratorProvider
         } else {
             $templateData = str_replace('$RENDER_TYPE$', 'all()', $templateData);
         }
+
+        $SelectOptions="";
+        $SelectSource="";
+
+        foreach ($this->commandData->inputFields as $field) {
+            if (!is_null($field['typeOptions']))
+            {
+                $SelectSource .= "$" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . " = ".Config::get('generator.path_model', app_path('Models/')) . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "::lists('description','id');\n\t";
+                $SelectOptions .= "->with('" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "', $" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . ")\n\t";
+            }
+        }
+
+        $SelectOptions = trim($SelectOptions);
+        $SelectSource = trim($SelectOptions);
+
+        $templateData = str_replace('$SELECTS_INPUTS$', $SelectOptions, $templateData);
+
+        $templateData = str_replace('$SELECTS_SOURCE$', $SelectSource, $templateData);
+
+
 
         $fileName = $this->commandData->modelName.'Controller.php';
 
