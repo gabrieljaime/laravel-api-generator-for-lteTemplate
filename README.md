@@ -1,8 +1,5 @@
-Laravel API/Scaffold/CRUD Generator (Laravel5.1)
+Laravel API/Scaffold/CRUD Generator (Laravel5.1) for  gabrieljaime/laravel-admin-master
 =======================
-[![Latest Stable Version](https://poser.pugx.org/mitulgolakiya/laravel-api-generator/v/stable)](https://packagist.org/packages/mitulgolakiya/laravel-api-generator) [![Total Downloads](https://poser.pugx.org/mitulgolakiya/laravel-api-generator/downloads)](https://packagist.org/packages/mitulgolakiya/laravel-api-generator) [![Monthly Downloads](https://poser.pugx.org/mitulgolakiya/laravel-api-generator/d/monthly)](https://packagist.org/packages/mitulgolakiya/laravel-api-generator) [![Daily Downloads](https://poser.pugx.org/mitulgolakiya/laravel-api-generator/d/daily)](https://packagist.org/packages/mitulgolakiya/laravel-api-generator) [![Latest Unstable Version](https://poser.pugx.org/mitulgolakiya/laravel-api-generator/v/unstable)](https://packagist.org/packages/mitulgolakiya/laravel-api-generator) [![License](https://poser.pugx.org/mitulgolakiya/laravel-api-generator/license)](https://packagist.org/packages/mitulgolakiya/laravel-api-generator)
-
-### For Laravel 5.0, check out [1.3 branch](https://github.com/mitulgolakiya/laravel-api-generator/tree/1.3)
 
 I enjoy creating API's and I have worked on many projects that required them. But the problem I always faced was setting up all the boilerplate code. For example each end point needs a migration, model, controller, repository, and on and on. I wanted a way to streamline this process and that is how this package was born.
 
@@ -25,9 +22,6 @@ The artisan command can generate the following items:
 
 And your simple CRUD and APIs are ready in mere seconds.
 
-Here is the full documentation.
-
-[Upgrade Guide](https://github.com/mitulgolakiya/laravel-api-generator/blob/master/Upgrade_Guide.md).
 
 # Documentation is in process...
 
@@ -66,7 +60,7 @@ Documentation
             "laracasts/flash": "dev-master",
             "laravelcollective/html": "5.1.*@dev",
             "bosnadev/repositories": "dev-master",
-            "mitulgolakiya/laravel-api-generator": "dev-master"
+            "gabrieljaime/laravel-api-generator-gj": "dev-master"
         }
   
 2. Run composer update
@@ -79,7 +73,7 @@ Documentation
 
 		Collective\Html\HtmlServiceProvider::class,
 		Laracasts\Flash\FlashServiceProvider::class,
-		Mitul\Generator\GeneratorServiceProvider::class,
+		Gabo\Generator\GeneratorServiceProvider::class,
         
    Also for convenience, add these facades in alias array in ```config/app.php```.
 
@@ -91,7 +85,7 @@ Documentation
 
 Publish Configuration file ```generator.php```.
 
-        php artisan vendor:publish --provider="Mitul\Generator\GeneratorServiceProvider"
+        php artisan vendor:publish --provider="Gabo\Generator\GeneratorServiceProvider"
         
 Config file (```config/generator.php```) contains path for all generated files
 
@@ -127,7 +121,7 @@ Mainly, we need to do three basic things to get started.
 2. Publish ```api_routes.php``` which will contain all our api routes.
 3. Init ```routes.php``` for api routes. We need to include ```api_routes.php``` into main ```routes.php```.
 
-        php artisan mitul.generator:publish
+        php artisan gabo.generator:publish
 
 ## Generator
 
@@ -135,28 +129,26 @@ Fire artisan command to generate API, Scaffold with CRUD views or both API as we
 
 Generate API:
 
-        php artisan mitul.generator:api ModelName
+        php artisan gabo.generator:api ModelName
     
 Generate CRUD Scaffold:
  
-        php artisan mitul.generator:scaffold ModelName
+        php artisan gabo.generator:scaffold ModelName
         
 Generate CRUD Scaffold with API:
         
-        php artisan mitul.generator:scaffold_api ModelName
+        php artisan gabo.generator:scaffold_api ModelName
         
 e.g.
     
-    php artisan mitul.generator:api Project
-    php artisan mitul.generator:api Post
+    php artisan gabo.generator:api Project
+    php artisan gabo.generator:api Post
 
-    php artisan mitul.generator:scaffold Project
-    php artisan mitul.generator:scaffold Post
+    php artisan gabo.generator:scaffold Project
+    php artisan gabo.generator:scaffold Post
 
-    php artisan mitul.generator:scaffold_api Project
-    php artisan mitul.generator:scaffold_api Post
-
-Here is the sample [fields input json](https://github.com/mitulgolakiya/laravel-api-generator/blob/master/samples/fields.json)
+    php artisan gabo.generator:scaffold_api Project
+    php artisan gabo.generator:scaffold_api Post
 
 ## Supported HTML Field Types
 
@@ -184,7 +176,7 @@ If you want to use your own base controller or want to extend/modify default App
 
     1. Publish AppBaseController in your controllers path
     
-        php artisan mitul.generator:publish --baseController
+        php artisan gabo.generator:publish --baseController
         
     2. Modify the content of ```AppBaseController.php``` and set it as a ```base_controller``` in ```config/generator.php```
 
@@ -194,7 +186,7 @@ To use your own custom templates,
 
 1. Publish templates to  ```/resources/api-generator-templates```
 
-        php artisan mitul.generator:publish --templates
+        php artisan gabo.generator:publish --templates
 
 2. Leave only those templates that you want to change. Remove the templates that do not plan to change.
 
@@ -205,13 +197,13 @@ To use your own custom templates,
 To paginate records, you can specify paginate option,
 e.g.
 
-        php artisan mitul.generator:api Post --paginate=10
+        php artisan gabo.generator:api Post --paginate=10
 
 ### Model Soft Deletes
 
 To use SoftDelete, use softDelete option,
 
-        php artisan mitul.generator:api Post --softDelete
+        php artisan gabo.generator:api Post --softDelete
 
 ### Fields From File
 
@@ -219,26 +211,26 @@ If you want to pass fields from file then you can create fields json file and pa
 
 You have to pass option ```--fieldsFile=absolute_file_path_or_path_from_base_directory``` with command. e.g.
 
-         php artisan mitul.generator:scaffold_api Post --fieldsFile="/Users/Mitul/laravel-api-generator/fields.json"
-         php artisan mitul.generator:scaffold_api Post --fieldsFile="fields.json"
+         php artisan gabo.generator:scaffold_api Post --fieldsFile="/Users/Gabo/laravel-api-generator-for-lteTemplate/fields.json"
+         php artisan gabo.generator:scaffold_api Post --fieldsFile="fields.json"
 
 ### Custom Table Name
 
 You can also specify your own custom table name by,
 
-        php artisan mitul.generator:api Post --tableName=custom_table_name
+        php artisan gabo.generator:api Post --tableName=custom_table_name
 
 ### Skip Migration
 
 You can also skip migration generation,
 
-        php artisan mitul.generator:api Post --skipMigration
+        php artisan gabo.generator:api Post --skipMigration
 
 ### Remember Token
 
 To generate rememberToken field in migration file,
 
-        php artisan mitul.generator:api Post --rememberToken
+        php artisan gabo.generator:api Post --rememberToken
 
 ## Generator from existing tables
 
@@ -248,11 +240,13 @@ Just make sure, you have installed ```doctrine/dbal``` package.
 
 **Limitation:** As of now it is not fully working (work is in progress). It will not create migration file. You need to tweak some of the things in your generated files like timestamps, primary key etc. 
 
-        php artisan mitul.generator:api Post --fromTable --tableName=posts
+        php artisan gabo.generator:api Post --fromTable --tableName=posts
 
 Credits
 --------
 
-This API Generator is created by [Mitul Golakiya](https://github.com/mitulgolakiya).
+This API Generator is inspired on  [Mitul Golakiya](https://github.com/mitulgolakiya).
+And it was amended by [Gabriel Jaime](https://github.com/gabrieljaime) to suit the environment in https://github.com/gabrieljaime/laravel-admin-master
+
 
 **Bugs & Forks are welcomed :)**
