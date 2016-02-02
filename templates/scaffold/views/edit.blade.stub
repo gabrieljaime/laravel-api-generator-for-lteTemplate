@@ -18,7 +18,8 @@
                 Edit Employees
             </h1>
 
-            {!! Breadcrumbs::render('create_$MODEL_NAME_PLURAL_CAMEL$') !!}
+            {{--{!! Breadcrumbs::render('create_$MODEL_NAME_PLURAL_CAMEL$') !!}--}}
+
 
         </section>
 

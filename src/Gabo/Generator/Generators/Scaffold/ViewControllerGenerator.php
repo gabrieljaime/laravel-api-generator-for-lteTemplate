@@ -36,17 +36,22 @@ class ViewControllerGenerator implements GeneratorProvider
 
         //$SelectOptions="";
         //$SelectSource="";
+        $DataFields="";
         //
-        //foreach ($this->commandData->inputFields as $field) {
+        foreach ($this->commandData->inputFields as $field) {
         //    if (!is_null($field['typeOptions']))
         //    {
         //        $SelectSource .= "$" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . " = ".Config::get('generator.path_model', app_path('Models/')) . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "::lists('description','id');\n\t";
         //        $SelectOptions .= "->with('" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "', $" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . ")\n\t";
         //    }
-        //}
+            $DataFields .= "'". $this->commandData->modelNameCamel .".".Str::title(str_replace('_', ' ', $field['fieldName']))."',";
+        }
         //
         //$SelectOptions = trim($SelectOptions);
         //$SelectSource = trim($SelectSource);
+        $DataFields = trim($DataFields);
+        //
+        $templateData = str_replace('$DATA_FIELDS$', $DataFields, $templateData);
         //
         $templateData = str_replace('$SELECTS_INPUTS$', "", $templateData);
         //

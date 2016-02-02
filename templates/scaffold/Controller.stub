@@ -53,7 +53,7 @@ class $MODEL_NAME$Controller extends AppBaseController
     	 */
 	public function data()
     	{
-    		$$MODEL_NAME_PLURAL_CAMEL$ = '$MODEL_NAME_PLURAL_CAMEL$'::select(array($DATA_FILDS$));
+    		$$MODEL_NAME_PLURAL_CAMEL$ = $MODEL_NAME_PLURAL_CAMEL$::select(array($DATA_FIELDS$));
 
     		return Datatables::of($MODEL_NAME_PLURAL_CAMEL$)->make(true);
     	}

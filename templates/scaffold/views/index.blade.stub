@@ -18,7 +18,8 @@
                    <small> List </small>
                </h1>
 
-               {!! Breadcrumbs::render('$MODEL_NAME_PLURAL_CAMEL$') !!}
+              {{-- {!! Breadcrumbs::render('$MODEL_NAME_PLURAL_CAMEL$') !!}--}}
+
 
            </section>
            <section class="content">

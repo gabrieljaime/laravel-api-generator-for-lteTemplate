@@ -18,7 +18,7 @@
 				View $MODEL_NAME$
 			</h1>
 
-			{!! Breadcrumbs::render('view_$MODEL_NAME_PLURAL_CAMEL$') !!}
+			{{--{!! Breadcrumbs::render('view_$MODEL_NAME_PLURAL_CAMEL$') !!}--}}
 
 		</section>
 		<section class="content">
