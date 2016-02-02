@@ -34,24 +34,24 @@ class ViewControllerGenerator implements GeneratorProvider
             $templateData = str_replace('$RENDER_TYPE$', 'all()', $templateData);
         }
 
-        $SelectOptions="";
-        $SelectSource="";
-
-        foreach ($this->commandData->inputFields as $field) {
-            if (!is_null($field['typeOptions']))
-            {
-                $SelectSource .= "$" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . " = ".Config::get('generator.path_model', app_path('Models/')) . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "::lists('description','id');\n\t";
-                $SelectOptions .= "->with('" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "', $" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . ")\n\t";
-            }
-        }
-
-        $SelectOptions = trim($SelectOptions);
-        $SelectSource = trim($SelectOptions);
-
-        $templateData = str_replace('$SELECTS_INPUTS$', $SelectOptions, $templateData);
-
-        $templateData = str_replace('$SELECTS_SOURCE$', $SelectSource, $templateData);
-
+        //$SelectOptions="";
+        //$SelectSource="";
+        //
+        //foreach ($this->commandData->inputFields as $field) {
+        //    if (!is_null($field['typeOptions']))
+        //    {
+        //        $SelectSource .= "$" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . " = ".Config::get('generator.path_model', app_path('Models/')) . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "::lists('description','id');\n\t";
+        //        $SelectOptions .= "->with('" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . "', $" . Str::title(str_replace('_', ' ', $field['typeOptions'])) . ")\n\t";
+        //    }
+        //}
+        //
+        //$SelectOptions = trim($SelectOptions);
+        //$SelectSource = trim($SelectSource);
+        //
+        $templateData = str_replace('$SELECTS_INPUTS$', "", $templateData);
+        //
+        $templateData = str_replace('$SELECTS_SOURCE$', "", $templateData);
+        //
 
 
         $fileName = $this->commandData->modelName.'Controller.php';

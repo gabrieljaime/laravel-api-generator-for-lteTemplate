@@ -89,15 +89,15 @@ class CommandData
 
             $type = $this->commandObj->ask('Enter field html input type (text): ', 'text');
 
-            $typeOptions = explode(':', $type);
-            $typeConsult = $typeOptions[0];
+            //$typeOptions = explode(':', $type);
+            //$typeConsult = $typeOptions[0];
 
             $selectClass="";
-            if (strtoupper($typeConsult)=="SELECT")
-            {
-                $selectClass = $this->commandObj->ask('Enter the class name for the select option (Select): ', 'null');
-            }
-
+            //if (strtoupper($typeConsult)=="SELECT")
+            //{
+            //    $selectClass = $this->commandObj->ask('Enter the class name for the select option (Select): ', 'null');
+            //}
+            $selectClass= "";
             $validations = $this->commandObj->ask('Enter validations: ', false);
 
             $validations = ($validations == false) ? '' : $validations;
