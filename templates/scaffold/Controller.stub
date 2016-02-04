@@ -54,9 +54,17 @@ class $MODEL_NAME$Controller extends AppBaseController
     	 */
 	public function data()
     	{
-    		$$MODEL_NAME_PLURAL_CAMEL$ = $MODEL_NAME$::select(array($DATA_FIELDS$));
+    		$$MODEL_NAME_PLURAL_CAMEL$ = $MODEL_NAME$::select(array($DATA_FIELDS$'$MODEL_NAME_PLURAL_CAMEL$.id'));
 
-    		return Datatables::of($$MODEL_NAME_PLURAL_CAMEL$)->make(true);
+    		return Datatables::of($$MODEL_NAME_PLURAL_CAMEL$)
+    						->add_column('actions', '
+            				<div class="btn-group">
+            				<a href="{{{ URL::to(\'$MODEL_NAME_PLURAL_CAMEL$/\' . $Id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-primary"><i class="fa fa-pencil"></i>Edit </a>
+            				<a href="{{{ URL::to(\'$MODEL_NAME_PLURAL_CAMEL$/\' . $Id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger"><i class="fa fa-trash-o"></i>Delete </a>
+            				</div>
+                        	')
+            				->remove_column('id')
+            				->make(true);
     	}
 
 	/**

@@ -1,11 +1,13 @@
     <table id="Table$MODEL_NAME_PLURAL_CAMEL$" class="table table-striped table-hover table-bordered" >
         <thead>
              <tr>
+                <th> Action</th>
                 $FIELD_HEADERS$
              </tr>
         </thead>
        <tfoot>
             <tr>
+                <th> Action</th>
                 $FIELD_HEADERS$
              </tr>
          </tfoot>

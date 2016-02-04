@@ -135,7 +135,7 @@ class ViewGenerator implements GeneratorProvider
         }
 
         $TableColumns="";
-        $ColumnIndex =0;
+        $ColumnIndex =1;
 
         foreach ($this->commandData->inputFields as $field) {
             $TableColumns .= '{ "targets" : ['.$ColumnIndex.'],"data": "'.Str::title(str_replace('_', ' ', $field['fieldName'])).'" },';

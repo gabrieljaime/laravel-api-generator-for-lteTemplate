@@ -106,6 +106,7 @@
                     }
                     ]},
                 "columns": [
+                    { "targets" : [0],"data": "actions" },
                     $FIELDS_COLUMNS$
                 ]
             });
