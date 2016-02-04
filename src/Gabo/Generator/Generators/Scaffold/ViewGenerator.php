@@ -138,7 +138,7 @@ class ViewGenerator implements GeneratorProvider
         $ColumnIndex =0;
 
         foreach ($this->commandData->inputFields as $field) {
-            $TableColumns .= '{ "targets" : ['.$ColumnIndex.'],"data": "'.Str::title(str_replace('_', ' ', $field['fieldName'])).'" },\n\t';
+            $TableColumns .= '{ "targets" : ['.$ColumnIndex.'],"data": "'.Str::title(str_replace('_', ' ', $field['fieldName'])).'" },';
             $ColumnIndex ++;
         }
 

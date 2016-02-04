@@ -44,7 +44,7 @@
             @if($$MODEL_NAME_PLURAL_CAMEL$->isEmpty())
                 <div class="well text-center">No found any $MODEL_NAME_PLURAL$.</div>
             @else
-                 @include('employees.table')
+                 @include('$MODEL_NAME_PLURAL_CAMEL$.table')
             @endif
             </div>
         </div>
