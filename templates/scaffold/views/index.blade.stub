@@ -26,7 +26,7 @@
                 <div class="box box-primary">
 
                     @include('flash::message')
-
+                        @include('admin.modals.confirm-delete-gr')
                     <div class="box-header">
                         <div class="pull-right box-tools">
                             <a href="{{route('$MODEL_NAME_PLURAL_CAMEL$.create')}}" class="btn btn-primary btn-sm iframe">
@@ -86,7 +86,7 @@
                         dom: {
                                 button: {
                                 tag: 'a',
-                                className: 'btn btn-primary'
+                                className: 'btn btn-s btn-primary'
                             }
                         },
                     buttons:  [{

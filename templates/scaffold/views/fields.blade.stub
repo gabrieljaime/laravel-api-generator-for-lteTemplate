@@ -1,6 +1,6 @@
 $FIELDS$
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    {!! link_to('/'$MODEL_NAME_PLURAL_CAMEL$, 'Cancel', ['class' => 'btn btn-warning']) !!}
+    {!! Form::submit('Save', ['class' => 'btn btn-s btn-primary']) !!}
+    {!! link_to('/'$MODEL_NAME_PLURAL_CAMEL$, 'Cancel', ['class' => 'btn btn-s btn-warning']) !!}
 </div>
